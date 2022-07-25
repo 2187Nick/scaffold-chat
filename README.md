@@ -1,4 +1,4 @@
-# 🏗 Scaffold-ETH
+# 🏗 Scaffold-ETH Chat
 
 > everything you need to build on Ethereum! 🚀
 
@@ -11,16 +11,16 @@
 
 Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) plus [Yarn](https://classic.yarnpkg.com/en/docs/install/) and [Git](https://git-scm.com/downloads)
 
-> clone/fork 🏗 scaffold-eth:
+> clone/fork 🏗 scaffold-eth chat:
 
 ```bash
-git clone https://github.com/scaffold-eth/scaffold-eth.git
+git clone https://github.com/scaffold-eth/scaffold-chat.git
 ```
 
 > install and start your 👷‍ Hardhat chain:
 
 ```bash
-cd scaffold-eth
+cd scaffold-chat
 yarn install
 yarn chain
 ```
@@ -28,18 +28,32 @@ yarn chain
 > in a second terminal window, start your 📱 frontend:
 
 ```bash
-cd scaffold-eth
+cd scaffold-chat
 yarn start
 ```
+🔏 Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
+
+```bash
+Set the ContractOwner to the address created for you by scaffold-eth
+```
+![contractOwner_address](https://user-images.githubusercontent.com/75052782/180869750-e715c201-76ad-4d6a-97dd-eaa1d0627c8f.jpg)
+
 
 > in a third terminal window, 🛰 deploy your contract:
 
 ```bash
-cd scaffold-eth
+cd scaffold-chat
 yarn deploy
 ```
 
-🔏 Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
+```bash
+Add the Addresses that you want to chat with.
+
+Type your message and click Send Message!
+```
+
+![add_and_msg](https://user-images.githubusercontent.com/75052782/180870433-34208709-f9ba-459b-97f3-ae07f0d52f6b.jpg)
+
 
 📝 Edit your frontend `App.jsx` in `packages/react-app/src`
 
