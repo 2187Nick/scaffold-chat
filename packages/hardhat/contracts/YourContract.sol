@@ -10,16 +10,20 @@ contract YourContract is Ownable {
   //address public constant ContractOwner = 0xdc1C7D69c66bADc7bD897c5257F9AC7e8a9FEECE; 
   address public constant ContractOwner = 0xef3A8D0a15755D024D514b984bec87d59638f1D1; 
   event SetPurpose(address sender, string purpose);
+  // Custom errors save gas on deployment as well as on revert
+  error NotOwner();
+  error OnlyMember();
 
   mapping (address => bool) allowedMembers;
 
   modifier onlyContractOwner {
-      require(msg.sender == ContractOwner);
+      if(msg.sender != ContractOwner){
+      revert NotOwner()};
       _;
   } 
-
+// Marking function as payable costs less gas as evm will not have to check if the user has sent value or not .
   function addMember(address _member)
-      external
+      external payable 
       onlyContractOwner
   {
       allowedMembers[_member] = true;
@@ -28,7 +32,8 @@ contract YourContract is Ownable {
 
   modifier onlyMembers() {
         
-        require(allowedMembers[msg.sender]);
+        if(!allowedMembers[msg.sender]){
+        revert OnlyMember()};
         _;
   }
 
@@ -38,9 +43,9 @@ contract YourContract is Ownable {
   /* constructor() payable {
     // what should we do on deploy?
   }  */
-
+// Payable saves gas 
   function setPurpose(string memory newPurpose)
-      external
+      external payable
       onlyMembers
       //onlyContractOwner
   {
