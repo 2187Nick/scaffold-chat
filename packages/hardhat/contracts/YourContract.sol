@@ -18,7 +18,8 @@ contract YourContract is Ownable {
 
   modifier onlyContractOwner {
       if(msg.sender != ContractOwner){
-      revert NotOwner()};
+      revert NotOwner();
+      }
       _;
   } 
 // Marking function as payable costs less gas as evm will not have to check if the user has sent value or not .
@@ -33,7 +34,8 @@ contract YourContract is Ownable {
   modifier onlyMembers() {
         
         if(!allowedMembers[msg.sender]){
-        revert OnlyMember()};
+        revert OnlyMember();
+        }
         _;
   }
 
